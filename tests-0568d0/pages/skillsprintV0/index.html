@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SkillSprint – Deine Lernplattform</title>
+  <meta name="description" content="SkillSprint: kompakte Lernplattform-Demo als barrierefreier One-Pager für A11y-Tests.">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <noscript>
+    <div class="no-js-note" role="note">Hinweis: Einige Interaktionen (Akkordeons, Filter, Formularvalidierung, Karussell) benötigen JavaScript. Die Grundinhalte sind weiterhin zugänglich.</div>
+  </noscript>
+
+  <!-- Skiplinks -->
+  <nav class="skiplinks" aria-label="Sprunglinks">
+    <a class="skiplink" href="#main">Zum Inhalt springen</a>
+    <a class="skiplink" href="#katalog">Zu den Kursen</a>
+    <a class="skiplink" href="#einschreiben">Zum Formular</a>
+    <a class="skiplink" href="#faq">Zu den FAQs</a>
+    <a class="skiplink" href="#footer">Zum Fußbereich</a>
+  </nav>
+
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+<img src="../images/skillsprint-logo-mark.svg" 
+alt="Zur Startseite von SkillSprint" style="width: 300px; height: auto;">
+</a>
+      <button id="menu-toggle" class="menu-toggle" aria-expanded="false" aria-controls="main-nav">Menü</button>
+      <nav id="main-nav" class="site-nav" aria-label="Hauptnavigation" aria-expanded="false">
+        <ul>
+          <li><a href="katalog.html">Katalog</a></li>
+          <li><a href="termine.html">Termine</a></li>
+          <li><a href="kursdetail.html">Kursdetails</a></li>
+          <li><a href="einschreiben.html">Einschreiben</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="video.html">Video</a></li>
+          <li><a href="erfahrungen.html">Erfahrungen</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <!-- Hero -->
+    <section id="hero" tabindex="-1" class="section section-hero" aria-labelledby="hero-title">
+      <div class="container">
+        <h1 id="hero-title">Lerne schneller mit SkillSprint</h1>
+        <p>Fokussierte Online-Kurse, klare Lernziele, zugängliche Inhalte.</p>
+        <p><a class="button" href="#katalog">Kurse ansehen</a></p>
+
+
+      <button id="menu-toggle-skillSprint" class="menu-toggle" aria-expanded="false" aria-controls="skillSprint-nav">Über uns Menü</button>
+      <nav id="skillSprint-nav" class="site-nav" aria-label="Über uns" aria-expanded="false">
+        <ul>
+          <li><a href="team.html">Unser Team</a></li>
+          <li><a href="phylosophie.html">Unsere Phylosophie</a></li>
+          <li><a href="jobs.html">Jobs</a></li>
+        </ul>
+      </nav>
+      </div>
+
+    </section>
+
+    <!-- Katalog -->
+    <section id="katalog" tabindex="-1" class="section" aria-labelledby="katalog-title">
+      <div class="container">
+        <h2 id="katalog-title">Kurskatalog</h2>
+
+        <form id="search-form" role="search" class="search-form" aria-describedby="search-hint">
+          <label for="search-input">Kurs suchen</label>
+          <input id="search-input" name="q" type="search" autocomplete="off" placeholder="z. B. HTML, Python, Formulare" data-test-id="search-input">
+          <button id="search-submit" class="button" type="submit">Suchen</button>
+
+        </form>
+
+        <div class="filters" aria-labelledby="filter-title">
+          <h3 id="filter-title">Filter</h3>
+          <div class="filter-groups">
+            <fieldset>
+              <legend>Optionen</legend>
+              <div class="control">
+                <input type="checkbox" id="filter-free" name="free">
+                <label for="filter-free">Kostenlos</label>
+              </div>
+              <div class="control">
+                <input type="checkbox" id="filter-cert" name="cert">
+                <label for="filter-cert">Zertifikat</label>
+              </div>
+              <div class="control">
+                <input type="checkbox" id="filter-a11y" name="a11y">
+                <label for="filter-a11y">Barrierefrei geprüft</label>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Level</legend>
+              <div class="control">
+                <input type="radio" id="level-any" name="level" value="" checked>
+                <label for="level-any">Alle</label>
+              </div>
+              <div class="control">
+                <input type="radio" id="level-begin" name="level" value="einsteiger">
+                <label for="level-begin">Einsteiger</label>
+              </div>
+              <div class="control">
+                <input type="radio" id="level-mid" name="level" value="mittel">
+                <label for="level-mid">Mittel</label>
+              </div>
+              <div class="control">
+                <input type="radio" id="level-adv" name="level" value="fortgeschritten">
+                <label for="level-adv">Fortgeschritten</label>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Dauer</legend>
+              <label for="dur-select" class="visually-hidden">Dauer auswählen</label>
+              <select id="dur-select" name="dauer">
+                <option value="">Alle</option>
+                <option value="kurz">≤ 2 Stunden</option>
+                <option value="mittel">2–8 Stunden</option>
+                <option value="lang">> 8 Stunden</option>
+              </select>
+            </fieldset>
+          </div>
+        </div>
+
+        <ul id="course-list" class="card-grid" role="list" aria-label="Ergebnisse" tabindex="-1">
+          <li class="card" data-level="einsteiger" data-dauer="kurz" data-free="true" data-cert="true" data-a11y="true">
+            <img 
+alt="Illustration: Browserfenster mit H1-Überschrift, Text, Liste und Bild mit Alt-Text" width="320" height="180" 
+src="../images/kurs-html-einstieg.svg"/>
+            <h3>HTML Einstieg</h3>
+            <p>Starte mit semantischem HTML und guten Mustern.</p>
+            <ul class="meta" role="list">
+              <li>Level: Einsteiger</li>
+              <li>Dauer: 1,5 h</li>
+              <li>Kostenlos</li>
+              <li>Zertifikat</li>
+<li><a href="kurs-html-einstieg.html">Mehr Informationen zu HTML Einstieg</a></li>
+            </ul>
+          </li>
+
+          <li class="card" data-level="mittel" data-dauer="mittel" data-free="false" data-cert="true" data-a11y="true">
+            <img 
+alt="Illustration eines Code-Editors mit farbigen Python-Grundelementen" width="320" height="180" 
+src="../images/kurs-python-basics.svg"/>
+            <h3>Python Basics</h3>
+            <p>Syntax, Datentypen und erste Automationen.</p>
+            <ul class="meta" role="list">
+              <li>Level: Mittel</li>
+              <li>Dauer: 4 h</li>
+              <li>Kostenpflichtig</li>
+              <li>Zertifikat</li>
+<li><a href="kurs-python-basics.html">Mehr Informationen zu Python Basics</a></li>
+            </ul>
+          </li>
+
+          <li class="card" data-level="fortgeschritten" data-dauer="lang" data-free="false" data-cert="false" data-a11y="true">
+            <img 
+alt="Illustration eines Formulars mit Labels, Pflichtkennzeichnung, Fehlermeldung und Status-Live-Region" width="320" height="180" 
+src="../images/kurs-a11y-formulare.svg"/>
+            <h3>Barrierefreie Webformulare</h3>
+            <p>Labels, Fehlermeldungen, ARIA korrekt einsetzen.</p>
+            <ul class="meta" role="list">
+              <li>Level: Fortgeschritten</li>
+              <li>Dauer: 10 h</li>
+              <li>Kostenpflichtig</li>
+              <li>Ohne Zertifikat</li>
+<li><a href="kurs-a11y-webformulare.html">Mehr Informationen zu Barrierefreie Webformulare</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Termine Tabelle -->
+    <section id="termine" class="section" aria-labelledby="termine-title">
+      <div class="container">
+        <h2 id="termine-title">Nächste Starttermine</h2>
+        <div class="table-scroll">
+          <table class="table">
+            <caption>Wöchentliche Kursstarts (Beispiel)</caption>
+            <thead>
+              <tr>
+                <th scope="col">Datum</th>
+                <th scope="col">Modus</th>
+                <th scope="col">Kurs</th>
+                <th scope="col">Level</th>
+                <th scope="col">Plätze</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Mo, 01.09.</th>
+                <td><img class="icon" src="../images/mode-onsite.svg" alt="Präsenzkurs"/> </td>
+                <td>HTML Einstieg</td>
+                <td><img class="icon" src="../images/level-1.svg" alt="Einsteiger"/></td>
+                <td>12</td>
+              </tr>
+              <tr>
+                <th scope="row">Mi, 03.09.</th>
+<td> <img class="icon" src="../images/mode-online.svg" alt="Onlinekurs"/></td>
+                <td>Python Basics</td>
+                <td><img class="icon" src="../images/level-2.svg" alt="Mittel"/></td>
+                <td>8</td>
+              </tr>
+              <tr>
+                <th scope="row">Fr, 05.09.</th>
+<td><img class="icon" src="../images/mode-online.svg" alt="Onlinekurs"/></td>
+                <td>A11y Webformulare</td>
+                <td><img class="icon" src="../images/level-3.svg" alt="Fortgeschritten"/></td>
+                <td>5</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kursdetail mit Akkordeon -->
+    <section id="kursdetail" class="section" aria-labelledby="kursdetail-title">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="kursdetail-title">Kursdetails: HTML Einstieg</h2>
+            <img 
+alt="Illustration: Browserfenster mit H1-Überschrift, Text, Liste und Bild mit Alt-Text" width="320" height="180" 
+src="../images/kurs-html-einstieg.svg"/>
+          <button id="expand-all" class="button ghost" data-target="lehrplan">Alles ausklappen</button>
+        </div>
+
+        <div class="accordion" id="lehrplan">
+          <h3 class="h-sub">Lehrplan</h3>
+
+          <div class="accordion-item">
+            <h4>
+              <button class="accordion-trigger" id="acc-1" aria-expanded="false" aria-controls="panel-1">
+                Modul 1: Semantik &amp; Struktur
+              </button>
+            </h4>
+            <div id="panel-1" class="accordion-panel" role="region" aria-labelledby="acc-1" hidden>
+              <ul>
+                <li>Grundgerüst &lt;!doctype&gt;, &lt;html&gt;, Landmarks</li>
+                <li>Überschriftenhierarchie</li>
+                <li>Listen, Tabellen, Formulare – wann was?</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h4>
+              <button class="accordion-trigger" id="acc-2" aria-expanded="false" aria-controls="panel-2">
+                Modul 2: Medien &amp; Alternativen
+              </button>
+            </h4>
+            <div id="panel-2" class="accordion-panel" role="region" aria-labelledby="acc-2" hidden>
+              <ul>
+                <li>Alt-Texte richtig verfassen</li>
+                <li>Video mit Untertiteln &amp; Transkript</li>
+                <li>Dekorative vs. informative Grafiken</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h4>
+              <button class="accordion-trigger" id="acc-3" aria-expanded="false" aria-controls="panel-3">
+                Modul 3: Interaktionen &amp; ARIA
+              </button>
+            </h4>
+            <div id="panel-3" class="accordion-panel" role="region" aria-labelledby="acc-3" hidden>
+              <ul>
+                <li>Akkordeons, Karussells, Dialoge</li>
+                <li>Fokus-Management</li>
+                <li>ARIA: so viel wie nötig, so wenig wie möglich</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <aside class="info-box" aria-label="Hinweise">
+          <h3 class="h-sub">Voraussetzungen</h3>
+          <ul>
+            <li>Grundlegende Computerkenntnisse</li>
+            <li>Neugier &amp; Lernbereitschaft</li>
+          </ul>
+          <h3 class="h-sub">Lernziele</h3>
+          <ul>
+            <li>Semantisch korrekte HTML-Strukturen erstellen</li>
+            <li>Alt-Texte und Medienalternativen sicher einsetzen</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Einschreiben Formular -->
+    <section id="einschreiben" tabindex="-1" class="section" aria-labelledby="einschreiben-title">
+      <div class="container">
+        <h2 id="einschreiben-title">Einschreiben</h2>
+
+        <div id="form-errors" class="form-errors" aria-live="assertive"></div>
+
+        <form id="enroll-form" novalidate data-test-id="enroll-form">
+          <p id="req-hint" class="hint">Die mit <span>*</span> gekennzeichneten Felder sind Pflichtfelder.</p>
+
+          <div class="form-row">
+            <label for="first">Vorname<span>*</span></label>
+            <input id="first" name="first" autocomplete="given-name" required aria-describedby="first-hint" placeholder="Max">
+            <div id="first-hint" class="hint">So wie auf dem Zertifikat gewünscht.</div>
+          </div>
+
+          <div class="form-row">
+            <label for="last">Nachname<span>*</span></label>
+            <input id="last" name="last" autocomplete="family-name" required placeholder="Mustermann">
+          </div>
+
+          <div class="form-row">
+            <label for="email">E‑Mail <span>*</span></label>
+            <input id="email" name="email" type="email" autocomplete="email" required aria-describedby="email-hint" placeholder="mail@example.com">
+            <div id="email-hint" class="hint">Wir senden die Bestätigung an diese Adresse.</div>
+          </div>
+
+          <fieldset class="form-fieldset">
+            <legend>Tarif <span>*</span></legend>
+            <div class="control">
+              <input type="radio" id="plan-basic" name="plan" value="basic" required>
+              <label for="plan-basic">Basic</label>
+            </div>
+            <div class="control">
+              <input type="radio" id="plan-pro" name="plan" value="pro">
+              <label for="plan-pro">Pro</label>
+            </div>
+            <div class="control">
+              <input type="radio" id="plan-team" name="plan" value="team">
+              <label for="plan-team">Team</label>
+            </div>
+          </fieldset>
+
+          <div class="form-row">
+            <label for="pay">Bezahlart <span>*</span></label>
+            <select id="pay" name="pay" required>
+              <option value="">Bitte wählen</option>
+              <option>Kreditkarte</option>
+              <option>PayPal</option>
+              <option>Rechnung</option>
+            </select>
+          </div>
+
+          <fieldset class="form-fieldset">
+            <legend>Einwilligungen</legend>
+            <div class="control">
+              <input type="checkbox" id="agree-terms" name="agree-terms" required>
+              <label for="agree-terms">Ich akzeptiere die AGB <span>*</span></label>
+            </div>
+            <div class="control">
+              <input type="checkbox" id="agree-privacy" name="agree-privacy" required>
+              <label for="agree-privacy">Ich stimme der Datenschutzerklärung zu <span aria-hidden="true">*</span></label>
+            </div>
+            <div class="control">
+              <input type="checkbox" id="newsletter" name="newsletter">
+              <label for="newsletter">Newsletter erhalten (optional)</label>
+            </div>
+          </fieldset>
+
+          <div class="form-actions">
+            <button class="button primary" type="submit" data-test-id="enroll-submit">Kostenpflichtig buchen</button>
+            <button class="button" type="reset">Abbrechen</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Dashboard Tabelle -->
+    <section id="dashboard" class="section" aria-labelledby="dashboard-title">
+      <div class="container">
+        <h2 id="dashboard-title">Meine Kurse</h2>
+        <div class="table-scroll">
+          <table class="table">
+            <caption>Aktuelle Einschreibungen</caption>
+            <thead>
+              <tr>
+                <th scope="col">Kurs</th>
+                <th scope="col">Status</th>
+                <th scope="col">Fortschritt</th>
+                <th scope="col">Aktionen</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">HTML Einstieg</th>
+                <td>Aktiv</td>
+                <td>20&nbsp;%</td>
+                <td>
+                  <button class="button small">Weiterlernen</button>
+                  <button class="button small" disabled aria-disabled="true" title="Zertifikat erst ab 100 % verfügbar">Zertifikat ansehen</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" tabindex="-1" class="section" aria-labelledby="faq-title">
+      <div class="container">
+        <h2 id="faq-title">Häufige Fragen</h2>
+          <button id="faq-expand-all" class="button ghost" data-target="faq-acc">Alles ausklappen</button>
+        <div class="accordion" id="faq-acc">
+          <div class="accordion-item">
+            <h3 class="h-sub">
+              <button class="accordion-trigger" id="faq-q1" aria-expanded="false" aria-controls="faq-a1">Gibt es Rabatte für Studierende?</button>
+            </h3>
+            <div id="faq-a1" class="accordion-panel" role="region" aria-labelledby="faq-q1" hidden>
+              <p>Ja, 30 % Rabatt mit gültiger Immatrikulationsbescheinigung.</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h3 class="h-sub">
+              <button class="accordion-trigger" id="faq-q2" aria-expanded="false" aria-controls="faq-a2">Wie erhalte ich ein Zertifikat?</button>
+            </h3>
+            <div id="faq-a2" class="accordion-panel" role="region" aria-labelledby="faq-q2" hidden>
+              <p>Nach Abschluss von 100 % erscheint das Zertifikat im Dashboard.</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h3 class="h-sub">
+              <button class="accordion-trigger" id="faq-q3" aria-expanded="false" aria-controls="faq-a3">Gibt es Unterstützungstechnologien?</button>
+            </h3>
+            <div id="faq-a3" class="accordion-panel" role="region" aria-labelledby="faq-q3" hidden>
+              <p>Ja, Untertitel, Transkripte und Tastaturbedienbarkeit sind vorgesehen.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Audio -->
+    <section class="ns-player" role="region" aria-label="SkillSprint Podcast" tabindex="0" aria-describedby="ns-kbd-help">
+<h2>Der Podcast von SkillSprint</h2>
+<article aria-label="Episode 121">
+      <header>
+        <div>
+<h3>Episode 121: Testen ist das halbe Leben</h3>
+        </div>
+      </header>
+
+      <!-- Das eigentliche Audio-Element, ohne native Controls (wir bauen eigene) -->
+      <audio id="ns-audio" preload="metadata">
+        <!-- Ersetzen Sie die Datei unten durch Ihren eigenen Pfad -->
+        <source src="../audio/test.mp3" type="audio/mpeg" />
+        <!-- Fallback-Text -->
+        Ihr Browser unterstützt das Audio-Element nicht.
+      </audio>
+
+      <!-- Fortschrittsanzeige + Steuerung -->
+      <div class="ns-controls" id="ns-controls">
+        <button type="button" class="ns-btn" id="ns-play" aria-label="Abspielen">
+          <!-- Play Icon -->
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          <span>Abspielen</span>
+        </button>
+
+        <button type="button" class="ns-btn" id="ns-back10" aria-label="10 Sekunden zurück">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6a6 6 0 1 1-6-6z"/></svg>
+          <span>-10s</span>
+        </button>
+
+        <button type="button" class="ns-btn" id="ns-fwd30" aria-label="30 Sekunden vorspringen">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V1l5 5-5 5V7c-3.31 0-6 2.69-6 6a6 6 0 1 0 6-6z"/></svg>
+          <span>+30s</span>
+        </button>
+        <div class="ns-field ns-volume" style="justify-self:end">
+          <label class="sr-only" for="ns-volume">Lautstärke</label>
+          <input id="ns-volume" class="ns-range" type="range" min="0" max="1" step="0.01" value="1" aria-label="Lautstärke" />
+        </div>
+
+
+      <p id="ns-status" class="sr-only" aria-live="polite"></p>
+
+
+
+    </section>
+
+
+    <!-- Fallback ohne JavaScript: Native Controls anzeigen -->
+    <noscript>
+      <p><strong>Hinweis:</strong> JavaScript ist deaktiviert. Der Standard‑Audioplayer Ihres Browsers wird verwendet.</p>
+      <audio controls preload="metadata">
+        <source src="../audio/test.mp3" type="audio/mpeg" />
+      </audio>
+    </noscript>
+</article>
+  </section>
+
+    <!-- Testimonials (Karussell) -->
+    <section id="testimonials" class="section" aria-labelledby="testimonials-title">
+      <div class="container">
+        <h2 id="testimonials-title">Erfahrungsberichte</h2>
+        <div class="carousel" role="group" aria-roledescription="Karussell" aria-label="Erfahrungsberichte">
+          <div class="carousel-viewport" id="carousel-viewport">
+            <ul class="carousel-items" role="list">
+              <li class="carousel-item is-active" data-index="0" aria-hidden="false">
+                <figure>
+                  <blockquote>„Kompakt und verständlich – perfekt für den Einstieg.“</blockquote>
+                  <figcaption>Lea, Einsteigerin</figcaption>
+                </figure>
+              </li>
+              <li class="carousel-item" data-index="1" aria-hidden="true">
+                <figure>
+                  <blockquote>„Die Beispiele sind praxistauglich und direkt nutzbar.“</blockquote>
+                  <figcaption>– Omar, Entwickler</figcaption>
+                </figure>
+              </li>
+              <li class="carousel-item" data-index="2" aria-hidden="true">
+                <figure>
+                  <blockquote>„A11y wurde nicht nur erwähnt, sondern konsequent umgesetzt.“</blockquote>
+                  <figcaption>– Jana, QA</figcaption>
+                </figure>
+              </li>
+            </ul>
+          </div>
+          <div class="carousel-controls">
+            <button class="button small" type="button" id="prev-slide" aria-controls="carousel-viewport">Zurück</button>
+            <button class="button small" type="button" id="next-slide" aria-controls="carousel-viewport">Weiter</button>
+          </div>
+          <div class="carousel-pagination" role="tablist" aria-label="Folienauswahl">
+            <button role="tab" aria-selected="true" aria-controls="carousel-viewport" data-slide="0" class="pager">1</button>
+            <button role="tab" aria-selected="false" aria-controls="carousel-viewport" data-slide="1" class="pager">2</button>
+            <button role="tab" aria-selected="false" aria-controls="carousel-viewport" data-slide="2" class="pager">3</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Live-Region für Statusmeldungen (am Seitenende) -->
+    <div id="status-live" class="visually-hidden" role="status" aria-live="polite" aria-atomic="true"></div>
+  </main>
+
+  <footer id="footer" tabindex="-1" class="site-footer">
+    <div class="container">
+      <p><a href="#hero">Nach oben</a></p>
+      <p><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></p>
+      <p><small>© SkillSprint Demo</small></p>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js" defer></script>
+  <script 
+src="../scripts/ns-playerS2.js"></script>
+</body>
+</html>

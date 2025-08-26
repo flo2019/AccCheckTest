@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" role="img" aria-labelledby="title desc">
+  <title>Level: Mittel</title>
+  <desc>Drei Fortschrittsbalken; 2 von 3 Balken hervorgehoben.</desc>
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="5" y="11" width="2.5" height="8" fill="currentColor" stroke="currentColor"/>
+<rect x="11" y="7" width="2.5" height="12" fill="currentColor" stroke="currentColor"/>
+<rect x="17" y="3" width="2.5" height="16" fill="none" opacity="0.35"/>
+  </g>
+</svg>

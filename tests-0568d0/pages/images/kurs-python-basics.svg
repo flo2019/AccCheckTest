@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" role="img" aria-labelledby="title desc">
+  <title>Kursbild: Python Basics</title>
+  <desc>Illustration eines Editorfensters mit farbigen Codezeilen (def, for, print) und einer abstrahierten Python-Schlange als Icon.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#1d4ed8"/>
+      <stop offset="1" stop-color="#10b981"/>
+    </linearGradient>
+    <linearGradient id="pane" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="1"/>
+      <stop offset="1" stop-color="#f5f7fb" stop-opacity="1"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect x="0" y="0" width="640" height="360" fill="url(#bg)"/>
+
+  <!-- Editor card -->
+  <g transform="translate(36,36)">
+    <rect x="0" y="0" width="568" height="288" rx="14" fill="url(#pane)" stroke="rgba(17,24,39,0.15)"/>
+    <!-- titlebar -->
+    <rect x="0" y="0" width="568" height="38" rx="14" fill="#eef2ff"/>
+    <g transform="translate(16,12)" fill="#cbd5e1">
+      <circle cx="0" cy="0" r="6"/>
+      <circle cx="20" cy="0" r="6"/>
+      <circle cx="40" cy="0" r="6"/>
+    </g>
+    <rect x="100" y="10" width="448" height="18" rx="9" fill="#e5e7eb"/>
+
+    <!-- code area -->
+    <g transform="translate(20,54)">
+      <!-- line numbers column -->
+      <rect x="0" y="0" width="36" height="214" rx="6" fill="#f1f5f9"/>
+      <g fill="#94a3b8" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="12">
+        <text x="20" y="18" text-anchor="middle">1</text>
+        <text x="20" y="40" text-anchor="middle">2</text>
+        <text x="20" y="62" text-anchor="middle">3</text>
+        <text x="20" y="84" text-anchor="middle">4</text>
+        <text x="20" y="106" text-anchor="middle">5</text>
+        <text x="20" y="128" text-anchor="middle">6</text>
+        <text x="20" y="150" text-anchor="middle">7</text>
+        <text x="20" y="172" text-anchor="middle">8</text>
+        <text x="20" y="194" text-anchor="middle">9</text>
+      </g>
+
+      <!-- syntax colored "tokens" as rounded bars -->
+      <!-- def greet(name): -->
+      <rect x="48" y="8" width="34" height="14" rx="3" fill="#1d4ed8" opacity="0.95"/>
+      <rect x="88" y="8" width="58" height="14" rx="3" fill="#111827" opacity="0.85"/>
+      <rect x="150" y="8" width="74" height="14" rx="3" fill="#111827" opacity="0.35"/>
+      <rect x="226" y="8" width="24" height="14" rx="3" fill="#111827" opacity="0.2"/>
+
+      <!-- indented return f-string -->
+      <rect x="62" y="30" width="58" height="14" rx="3" fill="#0ea5e9"/>
+      <rect x="124" y="30" width="160" height="14" rx="3" fill="#f59e0b"/>
+      <rect x="288" y="30" width="24" height="14" rx="3" fill="#111827" opacity="0.2"/>
+
+      <!-- for i in range(3): -->
+      <rect x="48" y="52" width="30" height="14" rx="3" fill="#1d4ed8" opacity="0.95"/>
+      <rect x="82" y="52" width="22" height="14" rx="3" fill="#10b981"/>
+      <rect x="108" y="52" width="44" height="14" rx="3" fill="#111827" opacity="0.85"/>
+      <rect x="156" y="52" width="84" height="14" rx="3" fill="#111827" opacity="0.35"/>
+      <rect x="244" y="52" width="24" height="14" rx="3" fill="#111827" opacity="0.2"/>
+
+      <!-- print(i) -->
+      <rect x="62" y="74" width="44" height="14" rx="3" fill="#0ea5e9"/>
+      <rect x="110" y="74" width="22" height="14" rx="3" fill="#111827" opacity="0.2"/>
+
+      <!-- comment -->
+      <rect x="48" y="96" width="220" height="14" rx="3" fill="#10b981" opacity="0.4"/>
+
+      <!-- second block: list comprehension -->
+      <rect x="48" y="128" width="34" height="14" rx="3" fill="#1d4ed8" opacity="0.95"/>
+      <rect x="88" y="128" width="90" height="14" rx="3" fill="#0ea5e9"/>
+      <rect x="182" y="128" width="120" height="14" rx="3" fill="#111827" opacity="0.35"/>
+      <rect x="306" y="128" width="24" height="14" rx="3" fill="#111827" opacity="0.2"/>
+
+      <!-- output area mock -->
+      <rect x="48" y="168" width="300" height="30" rx="6" fill="#e2e8f0" stroke="#cbd5e1"/>
+      <text x="60" y="188" font-size="12" fill="#334155" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">['Hello, Ada', 'Hello, Linus', 'Hello, Guido']</text>
+    </g>
+
+    <!-- right: abstract python "snake" emblem -->
+    <g transform="translate(420,62)">
+      <circle cx="84" cy="84" r="70" fill="#1d4ed8" opacity="0.1"/>
+      <path d="M40 80 C40 56, 64 56, 64 80 C64 96, 84 96, 84 80 C84 56, 108 56, 108 80 C108 108, 84 120, 72 124" fill="none" stroke="#1d4ed8" stroke-width="6" stroke-linecap="round"/>
+      <circle cx="70" cy="72" r="3" fill="#0ea5e9"/>
+      <circle cx="92" cy="72" r="3" fill="#0ea5e9"/>
+    </g>
+  </g>
+
+  <!-- caption -->
+  <g transform="translate(36,332)">
+    <rect x="0" y="-22" width="156" height="22" rx="6" fill="rgba(255,255,255,0.25)"/>
+    <text x="12" y="-6" font-size="12" fill="#0b1324" font-family="system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Arial,sans-serif">Kurs: Python Basics</text>
+  </g>
+</svg>

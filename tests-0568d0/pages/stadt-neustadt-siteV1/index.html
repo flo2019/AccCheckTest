@@ -1,0 +1,723 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>Startseite – Stadt Neustadt</title>
+  <style>
+    :root {
+      --brand: #0b5cab; --brand-contrast: #ffffff; --text: #111111; --bg: #ffffff; --muted: #444444; --card: #f7f7f7; --focus: #ffbf47;
+      --ns-bg: #ffffff;
+      --ns-surface: #f7f9fb;
+      --ns-border: #d7e1ea;
+      --ns-primary: #0a6abf; /* Neustadt Blau */
+      --ns-primary-contrast: #ffffff;
+      --ns-accent: #e1b902;  /* Akzent Gelb */
+      --ns-text: #0b2239;
+      --ns-text-muted: #3c526a;
+      --focus: #ff7f0e;
+    }
+    html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; line-height: 1.6; }
+    a { color: var(--brand); }
+    a:visited { color: #074a88; }
+
+    header { border-bottom: 1px solid #e3e3e3; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 1rem; }
+    .topbar { display: flex; gap: 1rem; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+    .brand { display:flex; align-items:center; gap:.75rem; }
+    .brand svg { width: 36px; height: 36px; }
+    .brand-title { font-size: 1.5rem; font-weight: 700; margin: 0; }
+    nav ul { list-style: none; padding: 0; margin: 0; display: flex; gap: 1rem; flex-wrap: wrap; }
+    nav a { text-decoration: none; padding: .5rem .75rem; border-radius: .5rem; }
+    nav a:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+    nav a:hover { text-decoration: underline; }
+    main h1 { margin-top: 1rem; font-size: 1.8rem; }
+    section { margin: 2rem 0; }
+    .grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+    .card { background: var(--card); padding: 1rem; border-radius: .75rem; }
+    .card h3 { margin-top: 0; font-size: 1.1rem; }
+    .list-clean { padding-left: 1.25rem; }
+    .muted { color: var(--muted); }
+    table { border-collapse: collapse; width: 100%; max-width: 60rem; }
+    th, td { border: 1px solid #ddd; padding: .5rem .6rem; text-align: left; vertical-align: top; }
+    th[scope="row"] { width: 35%; }
+    footer { border-top: 1px solid #e3e3e3; margin-top: 2rem; }
+    footer nav a { text-decoration: underline; }
+    :focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+    .disclosure-group { margin: .75rem 0 0 0; }
+    .disclosure-trigger { display: inline-flex; align-items: center; gap: .5rem; padding: .5rem .75rem; border-radius: .5rem; border: 1px solid #bbb; background: #fff; }
+    .disclosure-trigger:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+    .disclosure-panel { margin-top: .5rem; padding: .75rem; border: 1px solid #ddd; border-radius: .5rem; background: #f9f9f9; }
+    .button { border: 1px solid var(--brand); background: var(--brand); color: var(--brand-contrast); padding: .5rem .75rem; border-radius: .5rem; text-decoration: none; display:inline-block; }
+    .error-message {
+      color: red;
+      margin-top: 4px;
+    }
+    .error {
+      border: 2px solid red;
+    }
+    fieldset.error { border: 2px solid red; } /* Rahmen fürs ganze Set bei Fehler */
+
+    .sr-only { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+    .ns-audio { max-width: 920px; margin: 2rem auto; padding: 1rem; }
+
+    .ns-player { background: var(--ns-surface); border: 1px solid var(--ns-border); border-radius: 16px; padding: 1rem; box-shadow: 0 1px 2px rgba(0,0,0,.04); }
+    .ns-player header { display: flex; align-items: center; gap: .75rem; margin-bottom: .75rem; }
+    .ns-dot { width: 12px; height: 12px; border-radius: 999px; background: var(--ns-accent); border: 2px solid var(--ns-border); }
+    .ns-title { font-size: 1.0625rem; font-weight: 650; }
+    .ns-sub { color: var(--ns-text-muted); font-size: .9375rem; }
+
+    .ns-controls { display: grid; grid-template-columns: auto auto auto 1fr auto auto auto; gap: .75rem; align-items: center; }
+    @media (max-width: 720px) {
+      .ns-controls { grid-template-columns: auto auto auto 1fr; grid-auto-rows: auto; }
+      .ns-volume, .ns-rate, .ns-download { grid-column: span 1; }
+    }
+
+    .ns-btn { appearance: none; -webkit-appearance: none; border: 1px solid var(--ns-border); background: #fff; color: var(--ns-text); padding: .5rem .65rem; border-radius: 999px; cursor: pointer; font-weight: 600; line-height: 1; display: inline-flex; align-items: center; gap: .4rem; }
+    .ns-btn[aria-pressed="true"], .ns-btn.is-active { background: var(--ns-primary); color: var(--ns-primary-contrast); border-color: var(--ns-primary); }
+    .ns-btn:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+    .ns-btn svg { width: 18px; height: 18px; }
+
+    .ns-time { font-variant-numeric: tabular-nums; color: var(--ns-text-muted); }
+
+    .ns-slider { appearance: none; width: 100%; height: 10px; border-radius: 8px; background: linear-gradient(90deg, var(--ns-primary) var(--_progress, 0%), #e6edf4 var(--_progress, 0%)); outline: none; border: 1px solid var(--ns-border); }
+    .ns-slider:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+    /* WebKit thumb */
+    .ns-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 18px; height: 18px; border-radius: 999px; background: var(--ns-primary); border: 2px solid #fff; box-shadow: 0 0 0 1px var(--ns-primary); cursor: pointer; }
+    /* Firefox thumb */
+    .ns-slider::-moz-range-thumb { width: 18px; height: 18px; border-radius: 999px; background: var(--ns-primary); border: 2px solid #fff; box-shadow: 0 0 0 1px var(--ns-primary); cursor: pointer; }
+
+    .ns-field { display: inline-flex; align-items: center; gap: .5rem; }
+    .ns-select, .ns-range { border: 1px solid var(--ns-border); border-radius: 12px; padding: .4rem .55rem; background: #fff; color: var(--ns-text); }
+    .ns-select:focus-visible, .ns-range:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+    .ns-caption { margin-top: .5rem; font-size: .9375rem; color: var(--ns-text-muted); }
+
+    details.ns-transcript { margin-top: .75rem; border: 1px solid var(--ns-border); border-radius: 12px; background: #fff; }
+    details.ns-transcript > summary { cursor: pointer; list-style: none; padding: .75rem 1rem; font-weight: 650; }
+    details.ns-transcript[open] > summary { border-bottom: 1px solid var(--ns-border); }
+    details.ns-transcript > div { padding: 1rem; line-height: 1.6; }
+
+    /* High-contrast mode friendly focus ring for links */
+    a:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+    /* Utility: nur visuell ausblenden, für Screenreader verfügbar lassen */
+    .visually-hidden {
+      position: absolute !important;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0 0 0 0);
+      white-space: nowrap; border: 0;
+    }
+
+    .carousel {
+      max-width: 960px;
+      margin: 1rem auto;
+      padding: 0.5rem;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+    }
+
+    .carousel__header {
+      display: flex; justify-content: space-between; align-items: center;
+      gap: .5rem; margin-bottom: .5rem;
+    }
+
+    .carousel__viewport {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    .carousel__slide {
+      display: none;           /* wird nur für aktive Folie aufgehoben */
+      padding: 1rem;
+    }
+    .carousel__slide.is-active { display: block; }
+
+    .carousel__media {
+      width: 100%; height: auto; display: block;
+      border-radius: 8px; margin-bottom: .75rem;
+    }
+
+    .carousel__controls {
+      display: flex; gap: .5rem; align-items: center; justify-content: center;
+      margin-top: .5rem; flex-wrap: wrap;
+    }
+
+    .carousel__btn, .carousel__dot {
+      border: 1px solid #bbb; background: #fff;
+      padding: .5rem .75rem; border-radius: 999px; cursor: pointer;
+    }
+    .carousel__btn:focus, .carousel__dot:focus { outline: 3px solid #000; outline-offset: 2px; }
+
+    .carousel__dot[aria-current="true"] {
+      border-color: #000; font-weight: 600;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .carousel__slide.is-active { animation: fade .25s linear; }
+      @keyframes fade { from{opacity:.6} to{opacity:1} }
+    }
+
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+  <a class="skip-link" href="#kontakt-h">Zum Kontaktformular springen</a>
+  <!header>
+    <div class="container topbar" role="banner">
+      <div class="brand">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="2" width="20" height="20" rx="3" fill="#0b5cab"/>
+          <path d="M7 8h10v2H7zM7 12h10v2H7zM7 16h6v2H7z" fill="#fff"/>
+        </svg>
+
+      </div>
+</a>
+<a href="/">
+<img src="../images/Wappen.png" 
+alt="Zur Startseite der Stadt Neustadt" style="width: 300px; height: auto;">
+</a>
+      <nav >
+        <ul>
+
+          <li><a href="dienste.html">Bürgerdienste A–Z</a></li>
+          <li><a href="termine.html">Termine & Veranstaltungen</a></li>
+          <li><a href="nachrichten.html">Aktuelle Meldungen</a></li>
+          <li><a href="formulare.html">Formulare & Downloads</a></li>
+          <li><a href="kontakt.html">Kontakt & Öffnungszeiten</a></li>
+        </ul>
+        <div class="disclosure-group">
+          <button type="button" class="disclosure-trigger" aria-expanded="false" aria-controls="nav-schnellzugriff" data-disclosure>
+            Schnellzugriff auf häufige Dienste <span aria-hidden="true">▾</span>
+          </button>
+          <div id="nav-schnellzugriff" class="disclosure-panel" hidden>
+            <ul>
+              <li><a href="dienst-anmeldung.html">An-, Um- und Abmeldung</a></li>
+              <li><a href="dienst-ausweise.html">Personalausweis &amp; Reisepass</a></li>
+              <li><a href="dienst-sperrmuell.html">Sperrmüll-Anmeldung</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  <!/header>
+  <main id="inhalt" tabindex="-1" class="container">
+  <img 
+src="../images/neustadt.png" 
+alt="Eine Pflasterstraße in der neustädter Altstadt mit Fachwerkhäusern und einem Kirchturm sind zu sehen" 
+style="width: 300px; height: auto;">
+
+
+    <h1 > Willkommen in Neustadt</h1>
+    <p class="muted">Offizielle Informationen, Dienstleistungen und Termine der Stadtverwaltung.</p>
+
+
+    <section aria-labelledby="dienste-h">
+      <h3 id="dienste-h">Bürgerdienste A–Z</h3>
+      <div id="diensteGrid" class="grid">
+
+          <h3>An-, Um- und Abmeldung</h3>
+          <p>Meldeangelegenheiten für Bürgerinnen und Bürger.</p>
+          <p><a href="dienst-anmeldung.html" class="button">Zum Dienst</a></p>
+
+          <h3>Personalausweis & Reisepass</h3>
+          <p>Beantragung, Verlängerung, Abholung – alle Informationen.</p>
+          <p><a href="dienst-ausweise.html" class="button">Zum Dienst</a></p>
+
+          <h3>Gewerbeanmeldung</h3>
+          <p>Anmeldung, Ummeldung und Abmeldung von Gewerben.</p>
+          <p><a href="dienst-gewerbe.html" class="button">Zum Dienst</a></p>
+
+          <h3>Sperrmüll & Abfallkalender</h3>
+          <p>Abholtermine, Gebühren und Online-Anmeldung.</p>
+          <p><a href="dienst-sperrmuell.html" class="button">Zum Dienst</a></p>
+
+          <h3>Kitaplatz & Bildung</h3>
+          <p>Betreuung, Anträge und Informationen zu Einrichtungen.</p>
+          <p><a href="dienst-kita.html" class="button">Zum Dienst</a></p>
+
+          <h3>Bauen & Wohnen</h3>
+          <p>Baugenehmigung, Wohnraumförderung, Grundbesitzabgaben.</p>
+          <p><a href="dienst-bauen.html" class="button">Zum Dienst</a></p>
+      </div>
+
+      <div role="application" aria-label="Häufige Anliegen Menü" class="disclosure-group" style="margin-top:1rem;">
+        <button type="button" class="disclosure-trigger" aria-expanded="false" aria-controls="acc-haeufige-anliegen" data-disclosure>
+          Häufige Anliegen <span aria-hidden="true">▾</span>
+        </button>
+        <div tabindex="0" onkeydown="if(event.key === 'Tab') event.preventDefault();" role="application" id="acc-haeufige-anliegen" class="disclosure-panel" hidden>
+          <ul>
+        <li><a href="Wohnsitz-ummelden.html">
+Wohnsitz ummelden</a></li>
+        <li><a href="Reisepass-beantragen.html">
+Reisepass beantragen</a></li>
+        <li><a href="Gewerbe-anmelden.html">
+Gewerbe anmelden</a></li>
+        <li><a href="Hund-anmelden.html">
+Hund anmelden</a></li>
+        <li><a href="Parkerleichterung-beantragen.html">
+Parkerleichterung beantragen</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="termine-h">
+      <h2 id="termine-h">Termine & Veranstaltungen</h2>
+<table>
+  <caption>Termine der Stadtverwaltung</caption>
+  <thead>
+    <tr>
+      <th scope="col">Datum</th>
+      <th scope="col">Uhrzeit</th>
+      <th scope="col">Veranstaltung</th>
+      <th scope="col">Ort</th>
+      <th scope="col">Kontakt</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">01.09.2025</th>
+      <td>10:00 - 12:00</td>
+      <td>Stadtteilversammlung</td>
+      <td>Rathaus Saal A</td>
+      <td>stadtteil@stadt.de</td>
+    </tr>
+    <tr>
+      <th scope="row">05.09.2025</th>
+      <td>18:00 - 20:00</td>
+      <td>Kulturfestival Eröffnung</td>
+      <td>Kulturzentrum</td>
+      <td>kultur@stadt.de</td>
+    </tr>
+    <tr>
+      <th scope="row">09.09.2025</th>
+      <td>14:00 - 16:00</td>
+      <td>Umweltworkshop</td>
+      <td>Umweltamt</td>
+      <td>umwelt@stadt.de</td>
+    </tr>
+    <tr>
+      <th scope="row">12.09.2025</th>
+      <td>09:00 - 11:00</td>
+      <td>Sportfest</td>
+      <td>Sportplatz Nord</td>
+      <td>sport@stadt.de</td>
+    </tr>
+    <tr>
+      <th scope="row">15.10.2025</th>
+      <td>16:00 - 18:00</td>
+<td>Bürgerforum</td>
+      <td>Gemeindezentrum</td>
+      <td>buerger@stadt.de</td>
+    </tr>
+  </tbody>
+</table>
+      <p><a href="termine.html" class="button">Alle Termine anzeigen</a></p>
+
+<h2>Neustadt zum hören</h2>
+    <section class="ns-player" role="group" aria-label="Audioplayer Neustadt" tabindex="0" aria-describedby="ns-kbd-help">
+      <header>
+        <span class="ns-dot" aria-hidden="true"></span>
+        <div>
+          <div class="ns-title">Podcast: Baustellen-Update</div>
+          <div class="ns-sub">Stadt Neustadt · 20. August 2025</div>
+        </div>
+      </header>
+
+      <!-- Das eigentliche Audio-Element, ohne native Controls (wir bauen eigene) -->
+      <audio id="ns-audio" preload="metadata">
+        <!-- Ersetzen Sie die Datei unten durch Ihren eigenen Pfad -->
+        <source src="../audio/test.mp3" type="audio/mpeg" />
+        <!-- Fallback-Text -->
+        Ihr Browser unterstützt das Audio-Element nicht.
+      </audio>
+
+      <!-- Fortschrittsanzeige + Steuerung -->
+      <div class="ns-controls" id="ns-controls">
+        <button type="button" class="ns-btn" id="ns-play" aria-label="Abspielen">
+          <!-- Play Icon -->
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          <span>Abspielen</span>
+        </button>
+
+        <button type="button" class="ns-btn" id="ns-back10" aria-label="10 Sekunden zurück">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6a6 6 0 1 1-6-6z"/></svg>
+          <span>-10s</span>
+        </button>
+
+        <button type="button" class="ns-btn" id="ns-fwd30" aria-label="30 Sekunden vorspringen">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V1l5 5-5 5V7c-3.31 0-6 2.69-6 6a6 6 0 1 0 6-6z"/></svg>
+          <span>+30s</span>
+        </button>
+
+        <div class="ns-time" aria-live="off">
+          <span id="ns-current">0:00</span>
+          <span aria-hidden="true">/</span>
+          <span id="ns-duration">0:00</span>
+        </div>
+
+        <label class="sr-only" for="ns-seek">Wiedergabeposition</label>
+        <input id="ns-seek" class="ns-slider ns-range" type="range" min="0" max="100" step="0.1" value="0" aria-label="Wiedergabeposition" />
+
+        <button type="button" class="ns-btn" id="ns-mute" aria-label="Stumm schalten">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 9v6h4l5 5V4l-5 5H7z"/></svg>
+          <span>Stumm</span>
+        </button>
+
+        <div class="ns-field ns-volume" style="justify-self:end">
+          <label class="sr-only" for="ns-volume">Lautstärke</label>
+          <input id="ns-volume" class="ns-range" type="range" min="0" max="1" step="0.01" value="1" aria-label="Lautstärke" />
+        </div>
+
+        <div class="ns-field ns-rate" style="justify-self:end">
+          <label class="sr-only" for="ns-rate">Wiedergabegeschwindigkeit</label>
+          <select id="ns-rate" class="ns-select" aria-label="Wiedergabegeschwindigkeit">
+            <option value="0.75">0,75×</option>
+            <option value="0.9">0,9×</option>
+            <option value="1" selected>1× Normal</option>
+            <option value="1.25">1,25×</option>
+            <option value="1.5">1,5×</option>
+            <option value="1.75">1,75×</option>
+            <option value="2">2×</option>
+          </select>
+        </div>
+
+        <div class="ns-download" style="justify-self:end">
+          <a id="ns-download" class="ns-btn" href="../audio/test.mp3" download aria-label="Audio herunterladen">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20h14v-2H5m7-14v8l3.5-3.5 1.42 1.42L12 18l-4.92-4.92L8.5 10.5 12 14V4h0z"/></svg>
+            <span>Download</span>
+          </a>
+        </div>
+      </div>
+
+      <p id="ns-status" class="sr-only" aria-live="polite"></p>
+      <p id="ns-kbd-help" class="sr-only">Tastatur: Leertaste oder K für Abspielen/Pause, J für -10 Sekunden, L für +30 Sekunden, M für Stumm. Pfeiltasten bedienen die Regler.</p>
+
+      <figcaption class="ns-caption">Thema: Veränderte Verkehrsführung &amp; Baustellen in Neustadt</figcaption>
+    </section>
+
+    <details class="ns-transcript">
+      <summary>Transkript anzeigen</summary>
+      <div>
+        <p><strong>Moderatorin:</strong> Willkommen beim Baustellen-Update der Stadt Neustadt. In dieser Folge informieren wir über Sperrungen in der Innenstadt ...</p>
+        <p><em>Hinweis:</em> Ersetzen Sie diesen Text durch Ihr vollständiges Transkript, um <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> 1.2.1 (Audio‑only) zu erfüllen.</p>
+      </div>
+    </details>
+
+    <!-- Fallback ohne JavaScript: Native Controls anzeigen -->
+    <noscript>
+      <p><strong>Hinweis:</strong> JavaScript ist deaktiviert. Der Standard‑Audioplayer Ihres Browsers wird verwendet.</p>
+      <audio controls preload="metadata">
+        <source src="../audio/test.mp3" type="audio/mpeg" />
+      </audio>
+    </noscript>
+  </section>
+
+  <section class="carousel"
+           id="carousel-neustadt"
+role="application"
+tabindex="0" 
+onkeydown="if(event.key === 'Tab') event.preventDefault();"
+           aria-roledescription="Karussell"
+           aria-label="Was Neustadt zu bieten hat"
+
+>
+<h2></h2>
+
+    <div class="carousel__header">
+      <h2 id="carousel-heading">Was Neustadt zu bieten hat</h2>
+    </div>
+
+    <!-- Statusansage für Screenreader -->
+    <p id="carousel-status" class="visually-hidden" aria-live="polite"></p>
+
+    <!-- Viewport ist fokussierbar für Pfeiltasten-Navigation -->
+    <div class="carousel__viewport"
+         id="carousel-viewport"
+         tabindex="0"
+         aria-describedby="carousel-instructions carousel-status"
+         aria-labelledby="carousel-heading">
+
+      <!-- Folie 1 -->
+      <article class="carousel__slide is-active"
+               role="group"
+
+               aria-label="Folie 1 von 3">
+
+        <h3>Historisches Rathaus</h3>
+        <p>Das Herz der Altstadt: Seit Jahrhunderten Treffpunkt am Marktplatz, umgeben von Cafés und Wochenmarkt.</p>
+      </article>
+
+      <!-- Folie 2 (initial verborgen & aus A11y-Tree entfernt) -->
+      <article class="carousel__slide"
+               role="group"
+
+               aria-label="Folie 2 von 3"
+               aria-hidden="true"
+               hidden>
+
+        <h3>Stadtpark am Fluss</h3>
+        <p>Grüne Oase mitten in der Stadt—barrierearme Wege, duftende Blumenbeete und ruhige Sitzbereiche.</p>
+
+      </article>
+
+      <!-- Folie 3 -->
+      <article class="carousel__slide"
+               role="group"
+
+               aria-label="Folie 3 von 3"
+               aria-hidden="true"
+               hidden>
+
+        <h3>Aussichtsturm am Weinberg</h3>
+        <p>Beliebter Aussichtspunkt mit Blick über Dächer und Weinberge—ideal zum Sonnenuntergang.</p>
+
+      </article>
+    </div>
+
+    <div class="carousel__controls" aria-label="Karussell-Steuerung">
+      <button type="button" class="carousel__btn" id="btn-prev" aria-label="Vorherige Folie">◀ Vorherige</button>
+      <button type="button" class="carousel__btn" id="btn-next" aria-label="Nächste Folie">Nächste ▶</button>
+      <ul class="carousel__dots" aria-label="Folie auswählen">
+        <li><button type="button" class="carousel__dot" data-index="0" aria-label="Folie 1: Historisches Rathaus" aria-current="true">1</button></li>
+        <li><button type="button" class="carousel__dot" data-index="1" aria-label="Folie 2: Stadtpark am Fluss">2</button></li>
+        <li><button type="button" class="carousel__dot" data-index="2" aria-label="Folie 3: Aussichtsturm am Weinberg">3</button></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+    <section aria-labelledby="nachrichten-h">
+      <h2 id="nachrichten-h">Aktuelle Meldungen</h2>
+      <div id="meldungen" class="grid">
+        <article aria-label="Baustellenupdate Innenstadt"   class="card">
+          <h3>Baustellenupdate Innenstadt</h3>
+  <img 
+src="../images/img_warn_001.png" 
+alt="" 
+style="width: 300px; height: auto;">
+
+          <p>Die Umleitung in der Hauptstraße wird ab Montag aufgehoben. Bitte beachten Sie die neue Verkehrsführung.</p>
+          <p><a href="meldung-baustelle.html" class="button">Meldung lesen</a></p>
+        </article>
+        <article aria-label="Neuer Spielplatz im Stadtpark" class="card">
+          <h3>Neuer Spielplatz im Stadtpark</h3>
+          <p>Moderner Kletterbereich, barrierearmes Karussell und Sitzbereiche wurden eröffnet.</p>
+          <p><a href="meldung-spielplatz.html" class="button">Meldung lesen</a></p>
+        </article>
+        <article aria-label="Energiesparen im Winter" class="card">
+          <h3>Energiesparen im Winter</h3>
+          <p>Tipps der Stadtwerke und Fördermöglichkeiten für Haushalte.</p>
+          <p><a href="meldung-energiesparen.html" class="button">Meldung lesen</a></p>
+        </article>
+      </div>
+    </section>
+<main>
+    <section aria-labelledby="faq-h">
+  <img 
+src="../images/FAQ.png" 
+alt="" 
+style="width: 300px; height: auto;">
+
+
+
+      <h2 id="faq-h">Häufige Fragen (FAQ)</h2>
+
+      <div class="disclosure-group">
+        <button type="button" class="disclosure-trigger" aria-expanded="false" aria-controls="faq1" data-disclosure>
+          Wie buche ich einen Termin im Bürgerbüro? <span aria-hidden="true">▾</span>
+        </button>
+        <div id="faq1" class="disclosure-panel" hidden>
+          <p>Termine können online über den Dienst „An-, Um- und Abmeldung“ oder telefonisch unter <a href="tel:+49-1234-567890">+49&nbsp;1234&nbsp;567890</a> gebucht werden.</p>
+        </div>
+      </div>
+
+      <div class="disclosure-group">
+        <button type="button" class="disclosure-trigger" aria-expanded="false" aria-controls="faq2" data-disclosure>
+          Welche Unterlagen brauche ich für den Reisepass? <span aria-hidden="true">▾</span>
+        </button>
+        <div id="faq2" class="disclosure-panel" hidden>
+          <p>Ein biometrisches Passfoto, ein gültiges Ausweisdokument und ggf. eine Geburtsurkunde. Details finden Sie beim Dienst „Personalausweis & Reisepass“.</p>
+        </div>
+      </div>
+
+      <div class="disclosure-group">
+        <button type="button" class="disclosure-trigger" aria-expanded="false" aria-controls="faq3" data-disclosure>
+          Wie melde ich Sperrmüll an? <span aria-hidden="true">▾</span>
+        </button>
+        <div id="faq3" class="disclosure-panel" hidden>
+          <p>Online über den Dienst „Sperrmüll & Abfallkalender“. Sie erhalten nach Absenden eine Bestätigung mit Abholtermin.</p>
+        </div>
+      </div>
+
+      <div class="disclosure-group">
+        <button type="button" class="disclosure-trigger" aria-expanded="false" aria-controls="faq4" data-disclosure>
+          Gibt es Ermäßigungen für Gebühren? <span aria-hidden="true">▾</span>
+        </button>
+        <div id="faq4" class="disclosure-panel" hidden>
+          <p>Ja, für bestimmte Personengruppen. Eine Übersicht finden Sie auf der Seite „Bürgerdienste A–Z“.</p>
+        </div>
+      </div>
+    </section>
+    <section aria-labelledby="kontakt-h">
+      <h4 id="kontakt-h" tabindex="-1" >Kontaktformular</h4>
+  <p id="pflichtfeld-hinweis">Die mit * gekennzeichneten Felder sind Pflichtfelder.</p>
+
+  <!-- Zentrale Fehler-Statusmeldung -->
+  <div id="form-status" aria-live="assertive" style="margin-bottom: 1rem;"></div>
+
+  <form id="contactForm" novalidate aria-describedby="pflichtfeld-hinweis">
+
+    <div>
+      <label for="vorname">Vorname</label>
+      <input type="text" id="vorname" name="vorname" required aria-describedby="vorname-error">
+      <div id="vorname-error" class="error-message"></div>
+    </div>
+
+    <div>
+      <label for="nachname">Nachname *</label>
+      <input type="text" id="nachname" name="nachname" required aria-describedby="nachname-error">
+      <div id="nachname-error" class="error-message"></div>
+    </div>
+
+    <div>
+
+      <input type="email" id="email" name="email" required aria-describedby="email-error">
+      <div id="email-error" class="error-message"></div>
+    </div>
+
+    <div>
+      <label for="telefon">Telefon</label>
+      <input type="tel" id="telefon" name="telefon" aria-describedby="telefon-error">
+	      <div id="telefon-error" class="error-message"></div>
+    </div>
+
+    <div>
+      <label for="betreff">Betreff *</label>
+      <select id="betreff" name="betreff" required aria-describedby="betreff-error">
+        <option value="">Bitte wählen</option>
+        <option value="allgemein">Allgemeine Anfrage</option>
+        <option value="support">Support</option>
+        <option value="feedback">Feedback</option>
+      </select>
+      <div id="betreff-error" class="error-message"></div>
+    </div>
+
+    <!-- Radiogruppe 1: Bevorzugte Kontaktaufnahme -->
+<div>
+    <fieldset id="gruppe-kontaktart" aria-describedby="kontaktart-error">
+      <legend>Bevorzugte Kontaktaufnahme *</legend>
+
+
+        <input type="radio" id="kontaktart-email" name="kontaktart" value="email" required aria-describedby="kontaktart-error">
+        <label for="kontaktart-email">E-Mail</label>
+
+        <input type="radio" id="kontaktart-telefon" name="kontaktart" value="telefon" required aria-describedby="kontaktart-error">
+        <label for="kontaktart-telefon">Telefon</label>
+
+        <input type="radio" id="kontaktart-rueckruf-tag" name="kontaktart" value="rueckruf-tag" required aria-describedby="kontaktart-error">
+        <label for="kontaktart-rueckruf-tag">Rückruf tagsüber</label>
+
+        <input type="radio" id="kontaktart-rueckruf-abend" name="kontaktart" value="rueckruf-abend" required aria-describedby="kontaktart-error">
+        <label for="kontaktart-rueckruf-abend">Rückruf abends</label>
+      </div>
+
+      <div id="kontaktart-error" class="error-message"></div>
+    </fieldset>
+
+    <!-- Radiogruppe 2: Dringlichkeit -->
+    <fieldset id="gruppe-dringlichkeit" aria-describedby="dringlichkeit-error">
+      <legend>Dringlichkeit *</legend>
+
+      <div>
+        <input type="radio" id="dringlichkeit-niedrig" name="dringlichkeit" value="niedrig" required aria-describedby="dringlichkeit-error">
+
+
+        <input type="radio" id="dringlichkeit-mittel" name="dringlichkeit" value="mittel" required aria-describedby="dringlichkeit-error">
+
+
+        <input type="radio" id="dringlichkeit-hoch" name="dringlichkeit" value="hoch" required aria-describedby="dringlichkeit-error">
+
+
+        <input type="radio" id="dringlichkeit-sehrhoch" name="dringlichkeit" value="sehrhoch" required aria-describedby="dringlichkeit-error">
+
+      </div>
+
+      <div id="dringlichkeit-error" class="error-message"></div>
+    </fieldset>
+
+    <div>
+      <label for="nachricht">Nachricht *</label>
+      <textarea id="nachricht" name="nachricht" required aria-describedby="nachricht-error"></textarea>
+      <div id="nachricht-error" class="error-message"></div>
+    </div>
+
+    <div>
+      <input type="checkbox" id="einwilligung" name="einwilligung" required aria-describedby="einwilligung-error">
+
+      <div id="einwilligung-error" class="error-message"></div>
+    </div>
+
+    <button type="submit"></button>
+  </form>
+
+    </section>
+    <section aria-labelledby="formulare-h">
+      <h2 id="formulare-h">Formulare & Downloads</h2>
+      <ul class="list-clean">
+        <li><a href="pdf-bewohnerparkausweis.html">Antrag auf Bewohnerparkausweis (PDF, 120&nbsp;KB)</a></li>
+        <li><a href="pdf-sperrmuell.html">Sperrmüll-Anmeldung (PDF, 95&nbsp;KB)</a></li>
+        <li><a href="pdf-gewerbeanmeldung.html">Gewerbeanmeldung (PDF, 160&nbsp;KB)</a></li>
+      </ul>
+    </section>
+  </main>
+  <!footer>
+    <div class="container" role="contentinfo">
+      <nav >
+        <ul>
+          <li><a href="impressum.html">Impressum</a></li>
+          <li><a href="datenschutz.html">Datenschutz</a></li>
+          <li><a href="barrierefreiheit.html">Erklärung zur Barrierefreiheit</a></li>
+        </ul>
+      </nav>
+      <p class="muted">© 2025 Stadt Neustadt</p>
+    </div>
+  <!/footer>
+  <script>
+    document.addEventListener('click', function (e) {
+      const btn = e.target.closest('[data-disclosure]');
+      if (!btn) return;
+      const id = btn.getAttribute('aria-controls');
+      const panel = document.getElementById(id);
+      if (!panel) return;
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      panel.hidden = expanded;
+    });
+  </script>
+
+
+<script
+  src="../scripts/sync-heading-links.js"
+  defer
+  data-containers="diensteGrid,meldungen">
+</script>
+  <script
+    src="../scripts/form-validateV1.js"
+    defer
+    data-form-id="contactForm"
+    data-status-id="form-status">
+  </script>
+
+  <script 
+src="../scripts/ns-player.js"></script>
+
+<script 
+src="../scripts/ns-carouselV1.js"></script>
+</body>
+</html>
